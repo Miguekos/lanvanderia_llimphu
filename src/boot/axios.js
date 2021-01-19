@@ -6,9 +6,9 @@ const axiosInstance = axios.create({
   // baseURL: "http://172.105.17.123:4100"
   // baseURL: "http://127.0.0.1:5001",
   // baseURL: "http://192.168.0.21:9876"
-  baseURL: "https://api.apps.com.pe"
+  // baseURL: "https://api.apps.com.pe"
   // baseURL: "http://192.168.0.33:9876"
-  // baseURL: `${process.env.API_URL}`
+  baseURL: `${process.env.API_URL}`
   // headers: {
   //   'Authorization': `Bearer ${this.$q.localStorage.getItem('_token')}`,
   // }
