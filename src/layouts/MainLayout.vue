@@ -13,18 +13,23 @@
           class="q-mr-sm"
         />
 
-        <q-toolbar-title
-          v-if="$q.screen.gt.sm"
-          shrink
-          style="padding: 14px 0 0 6px;"
-        >
+        <q-toolbar-title shrink style="padding: 14px 0 0 0;">
           <img width="200" src="logo.png" />
           <!-- <span class="q-ml-sm">Noticias</span> -->
         </q-toolbar-title>
-        <q-toolbar-title v-else shrink class="row items-center no-wrap">
-          <!--          <img width="200" src="logo.svg">-->
-          <span class="q-ml-sm">{{ activador }}</span>
-        </q-toolbar-title>
+
+        <!--        <q-toolbar-title-->
+        <!--          v-if="$q.screen.gt.sm"-->
+        <!--          shrink-->
+        <!--          style="padding: 14px 0 0 6px;"-->
+        <!--        >-->
+        <!--          <img width="200" src="logo.png" />-->
+        <!--          &lt;!&ndash; <span class="q-ml-sm">Noticias</span> &ndash;&gt;-->
+        <!--        </q-toolbar-title>-->
+        <!--        <q-toolbar-title v-else shrink class="row items-center no-wrap">-->
+        <!--          &lt;!&ndash;          <img width="200" src="logo.svg">&ndash;&gt;-->
+        <!--          <span class="q-ml-sm">{{ $store.state.servicios.activador }}</span>-->
+        <!--        </q-toolbar-title>-->
 
         <q-space />
 
@@ -45,13 +50,13 @@
             <q-badge color="red" text-color="white" floating>
               2
             </q-badge>
-            <q-tooltip>Notifications</q-tooltip>
+            <q-tooltip>Notificaciones</q-tooltip>
           </q-btn>
           <q-btn round flat>
             <q-avatar size="26px">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
             </q-avatar>
-            <q-tooltip>Account</q-tooltip>
+            <q-tooltip>Cuenta</q-tooltip>
           </q-btn>
         </div>
       </q-toolbar>
@@ -72,7 +77,7 @@
         <!-- <span class="q-ml-sm">Noticias</span> -->
       </q-toolbar-title>
       <q-scroll-area :class="!$q.screen.gt.sm ? 'full-height' : 'fit'">
-        <q-list dense padding class="blue text-grey">
+        <q-list padding class="blue text-grey">
           <q-item>
             <q-item-section>
               REGISTROS
@@ -84,13 +89,13 @@
             v-for="link in links1"
             :key="link.text"
             clickable
-            :active="activador === `${link.text}`"
+            :active="$store.state.servicios.activador === `${link.text}`"
             active-class="my-menu-link"
           >
             <q-item-section avatar>
               <q-icon :name="link.icon" />
             </q-item-section>
-            <q-item-section @click="(activador = link.text), URL(link.url)">
+            <q-item-section @click="URL(link.url)">
               <q-item-label>{{ link.text }}</q-item-label>
             </q-item-section>
           </q-item>
@@ -107,15 +112,15 @@
             v-for="link in links2"
             :key="link.text"
             clickable
-            :active="activador === `${link.text}`"
+            :active="$store.state.servicios.activador === `${link.text}`"
             active-class="my-menu-link"
           >
             <q-item-section avatar>
               <q-icon :name="link.icon" />
             </q-item-section>
-            <q-item-section @click="(activador = link.text), URL(link.url)">
+            <q-item-section @click="URL(link.url)">
               <q-item-label
-                :active="activador === `${link.text}`"
+                :active="$store.state.servicios.activador === `${link.text}`"
                 active-class="my-menu-text"
                 >{{ link.text }}</q-item-label
               >
@@ -152,7 +157,15 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+        mode="out-in"
+      >
+        <router-view />
+      </transition>
+      <!--      <router-view />-->
     </q-page-container>
   </q-layout>
 </template>
@@ -165,7 +178,6 @@ export default {
 
   data() {
     return {
-      activador: "Registros",
       leftDrawerOpen: false,
       search: "",
       showAdvanced: false,
@@ -177,6 +189,7 @@ export default {
       byDate: "Any time",
       links1: [
         { icon: "web", text: "Registros", url: "registros" },
+        { icon: "web", text: "Seguimiento", url: "seguimiento" },
         { icon: "person", text: "Servicios", url: "servicios" }
       ],
       links2: [
@@ -231,8 +244,8 @@ export default {
     margin-right: 12px
     /*font-weight: bold*/
 
-    .q-item__section--avatar
-      .q-icon
+    /*.q-item__section--avatar*/
+    /*  .q-icon*/
     // color: #5f6368
 
     .q-item__label
