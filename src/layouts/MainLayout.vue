@@ -261,6 +261,6 @@ export default {
     font-weight: 500
     font-size: .75rem
 
-    &:hover
+    /*&:hover*/
 // color: #000
 </style>
