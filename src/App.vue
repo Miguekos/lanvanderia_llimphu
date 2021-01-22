@@ -4,7 +4,20 @@
   </div>
 </template>
 <script>
+import {
+  Loading,
+
+  // optional!, for example below
+  // with custom spinner
+  QSpinnerGears
+} from "quasar";
 export default {
-  name: 'App'
-}
+  name: "App",
+  created() {
+    this.$q.loading.setDefaults({
+      spinner: QSpinnerGears,
+      spinnerColor: "orange"
+    });
+  }
+};
 </script>

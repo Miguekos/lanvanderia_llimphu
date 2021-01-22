@@ -44,10 +44,17 @@ export default {
     ...mapActions("registros", ["call_service"])
   },
   async created() {
-    this.$store.commit("servicios/activador", "Seguimientos");
-    console.log("cargando Servicios");
-    // this.$router.replace("/servicios");
-    await this.call_service();
+    try {
+      this.$q.loading.show();
+      this.$store.commit("servicios/activador", "Seguimientos");
+      console.log("cargando Servicios");
+      // this.$router.replace("/servicios");
+      await this.call_service();
+      this.$q.loading.hide();
+    } catch (e) {
+      console.log(e);
+      this.$q.loading.hide();
+    }
   }
 };
 </script>

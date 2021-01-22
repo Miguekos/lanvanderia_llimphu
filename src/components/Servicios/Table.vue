@@ -241,6 +241,7 @@ export default {
   },
   methods: {
     async acciones(val) {
+      this.$q.loading.show();
       this.service_selec = val;
       await this.$store.dispatch("precios/call_list_service_id", val.id_);
       this.tabla_de_precios = this.$store.state.precios.get_list_service_id;
@@ -248,6 +249,7 @@ export default {
       // this.$q.notify({
       //   message: "Se preciono"
       // });
+      this.$q.loading.hide();
     },
     async agregarPrecio() {
       try {

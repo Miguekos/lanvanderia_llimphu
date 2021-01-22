@@ -43,10 +43,17 @@ export default {
     ...mapActions("servicios", ["call_list_service"])
   },
   async created() {
-    this.$store.commit("servicios/activador", "Servicios");
-    console.log("cargando Servicios");
-    // this.$router.replace("/servicios");
-    await this.call_list_service();
+    try {
+      this.$q.loading.show();
+      this.$store.commit("servicios/activador", "Servicios");
+      console.log("cargando Servicios");
+      // this.$router.replace("/servicios");
+      await this.call_list_service();
+      this.$q.loading.hide();
+    } catch (e) {
+      console.log(e);
+      this.$q.loading.hide();
+    }
   }
 };
 </script>
