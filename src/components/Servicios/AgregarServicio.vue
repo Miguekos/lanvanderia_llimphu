@@ -32,32 +32,6 @@
         </q-item>
         <q-item>
           <q-item-section>
-            <q-input
-              outlined
-              v-model="precio"
-              label="Precio"
-              mask="#.##"
-              fill-mask="0"
-              reverse-fill-mask
-              prefix="./S"
-            />
-          </q-item-section>
-        </q-item>
-        <q-item>
-          <q-item-section>
-            <q-input
-              outlined
-              v-model="descuento"
-              label="Descuento"
-              mask="#.##"
-              fill-mask="0"
-              reverse-fill-mask
-              prefix="./S"
-            />
-          </q-item-section>
-        </q-item>
-        <q-item>
-          <q-item-section>
             <q-btn
               outline
               class="full-width"
@@ -68,6 +42,44 @@
             />
           </q-item-section>
         </q-item>
+        <!--        <q-item>-->
+        <!--          <q-item-section>-->
+        <!--            <q-input-->
+        <!--              outlined-->
+        <!--              v-model="precio"-->
+        <!--              label="Precio"-->
+        <!--              mask="#.##"-->
+        <!--              fill-mask="0"-->
+        <!--              reverse-fill-mask-->
+        <!--              prefix="S/."-->
+        <!--            />-->
+        <!--          </q-item-section>-->
+        <!--        </q-item>-->
+        <!--        <q-item>-->
+        <!--          <q-item-section>-->
+        <!--            <q-input-->
+        <!--              outlined-->
+        <!--              v-model="descuento"-->
+        <!--              label="Descuento"-->
+        <!--              mask="#.##"-->
+        <!--              fill-mask="0"-->
+        <!--              reverse-fill-mask-->
+        <!--              prefix="S/."-->
+        <!--            />-->
+        <!--          </q-item-section>-->
+        <!--        </q-item>-->
+        <!--        <q-item>-->
+        <!--          <q-item-section>-->
+        <!--            <q-btn-->
+        <!--              outline-->
+        <!--              class="full-width"-->
+        <!--              color="primary"-->
+        <!--              type="submit"-->
+        <!--              label="Agregar"-->
+        <!--              :loading="loadboton"-->
+        <!--            />-->
+        <!--          </q-item-section>-->
+        <!--        </q-item>-->
       </q-list>
     </form>
   </div>
@@ -105,11 +117,13 @@ export default {
         await this.call_add_service({
           nombre: this.nombre,
           descripcion: this.descripcion,
-          precio: this.precio,
-          descuento: this.descuento,
           activo: "1"
         });
         await this.call_list_service();
+        this.nombre = "";
+        this.descripcion = "";
+        this.$refs.nombre.resetValidation();
+        this.$refs.descripcion.resetValidation();
         this.$q.notify({
           icon: "done",
           color: "positive",
