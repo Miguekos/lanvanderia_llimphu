@@ -161,6 +161,7 @@
                 size="md"
                 icon="add"
                 @click="agregarPrecio"
+                :loading="loadboton"
               ></q-btn>
             </div>
           </div>
