@@ -3,6 +3,7 @@ import Vuex from "vuex";
 
 // import example from './module-example'
 import servicios from "./store-servicios";
+import registros from "./store-registros";
 
 Vue.use(Vuex);
 
@@ -19,7 +20,8 @@ export default function(/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       // example
-      servicios
+      servicios,
+      registros
     },
 
     // enable strict mode (adds overhead!)

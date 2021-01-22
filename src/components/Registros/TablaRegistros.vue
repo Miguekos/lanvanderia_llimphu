@@ -43,7 +43,7 @@
                     Descuento:
                   </q-item-section>
                   <q-item-section class="text-right">
-                    {{ props.row.descuento }}
+                    S/. {{ props.row.descuento }}
                   </q-item-section>
                 </q-item>
               </q-list>

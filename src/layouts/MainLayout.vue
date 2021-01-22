@@ -189,13 +189,13 @@ export default {
       byDate: "Any time",
       links1: [
         { icon: "web", text: "Registros", url: "registros" },
-        { icon: "web", text: "Seguimiento", url: "seguimiento" },
-        { icon: "person", text: "Servicios", url: "servicios" }
+        { icon: "follow_the_signs", text: "Seguimientos", url: "seguimientos" },
+        { icon: "production_quantity_limits", text: "Servicios", url: "servicios" }
       ],
       links2: [
-        { icon: "flag", text: "Reportes" },
-        { icon: "group", text: "Usuarios" },
-        { icon: "star_border", text: "Caja" }
+        { icon: "flag", text: "Reportes", url: "" },
+        { icon: "group", text: "Usuarios", url: "" },
+        { icon: "star_border", text: "Caja", url: "" }
       ],
       links3: [{ icon: "open_in_new", text: "Help" }]
     };

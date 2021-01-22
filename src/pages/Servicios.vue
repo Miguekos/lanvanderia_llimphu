@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-xs items-start q-gutter-xs">
+  <div class="q-pa-xs items-start q-gutter-xs text-brown">
     <div class="row q-gutter-xs">
       <div class="col text-h5"></div>
       <div class="col text-right"></div>
@@ -17,11 +17,9 @@
         </q-card>
       </div>
       <div class="col-12 col-md-8 q-pa-xs">
-        <q-card flat bordered class="my-card">
-          <q-card-section class="q-pt-none">
-            <Tabla :info="get_list_service.result" />
-          </q-card-section>
-        </q-card>
+        <!--          <q-card-section class="q-pt-none">-->
+        <Tabla :info="get_list_service.result" />
+        <!--          </q-card-section>-->
       </div>
     </div>
   </div>
@@ -53,6 +51,6 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
-.my-card
-  width: 100%
+/*.my-card*/
+/*  width: 100%*/
 </style>
