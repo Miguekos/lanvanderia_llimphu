@@ -355,13 +355,13 @@ export default {
   },
   async created() {
     this.$store.commit("servicios/activador", "Registros");
-    this.$q.loading.show();
+    //this.$q.loading.show();
     await this.$store.dispatch("servicios/call_list_service");
     const lista = await this.$store.state.servicios.get_list_service.result;
     this.options = lista;
     this.options2 = lista;
     console.log(lista);
-    this.$q.loading.hide();
+    //this.$q.loading.hide();
   }
 };
 </script>
